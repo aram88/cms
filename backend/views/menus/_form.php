@@ -3,6 +3,7 @@
 <?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 		'id'=>'menus_form',
 		'type'=>'horizontal',
+		 'enableAjaxValidation'=>true,
 		'htmlOptions'=>array('class'=>'well')
 	)); ?>
 
@@ -73,14 +74,29 @@ array(
 		<?php echo $form->textFieldRow($model, 'position'); ?>
 		</div><!-- row -->
 		<div class="row">
-		<?php echo $form->dropDownListRow($model, 'menu_id', GxHtml::listDataEx(Menus::model()->findAllAttributes(null, true))); ?>
+		<?php echo $form->dropDownListRow($model, 'menu_id',array('empty'=>'----SELECT PARENT MENU----','menus'=> GxHtml::listDataEx(Menus::model()->findAllAttributes(null, true)))); ?>
 		</div><!-- row -->
 		<div class="row">
-		<?php echo $form->dropDownListRow($model, 'location',$model->getLocations()); ?>
+		<?php echo $form->dropDownListRow($model, 'location',array('empty'=>'----SELECT LOCATION----','options'=>$model->getLocations())); ?>
 		</div><!-- row -->
 		<div class="row">
 		<?php echo $form->toggleButtonRow($model, 'main_show'); ?>
 		</div><!-- row -->
+		
+		<?php  foreach ($languages as $language): ?>
+			<div class = "row">
+			<?php echo $language->name;?> <hr/>
+			</div>
+			<div class = row>
+				<?php echo $form->textFieldRow($model2[$language->id], '['.$language->id.']name');?>
+			</div>
+			<div class = row>
+				<?php echo $form->textFieldRow($model2[$language->id], '['.$language->id.']title');?>
+			</div>
+			<div class = row>
+				<?php echo $form->ckEditorRow($model2[$language->id], '['.$language->id.']text');?>
+			</div>
+		<?php endforeach;?>
 	
 		
 

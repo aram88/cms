@@ -49,7 +49,7 @@ abstract class BaseMenusTranslate extends GxActiveRecord {
 	public function rules() {
 		return array(
 			array('name, title', 'required'),
-			array('menu_id, created_by, updated_by, created_at, updated_at, lng_id', 'numerical', 'integerOnly'=>true),
+			array('menu_id,  created_by, updated_by, created_at, updated_at, lng_id', 'numerical', 'integerOnly'=>true),
 			array('label, img_name', 'length', 'max'=>255),
 			array('text, short_text', 'safe'),
 			array('menu_id, created_by, updated_by, label, text, img_name, short_text, created_at, updated_at, lng_id', 'default', 'setOnEmpty' => true, 'value' => null),

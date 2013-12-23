@@ -16,7 +16,7 @@
                 'boxWidth'=>700,
                 'boxHeight'=>700,
                 'setSelect'=>array(0, 0, 450, 400),
-        ),
+        ), 
         )
 );
 ?>

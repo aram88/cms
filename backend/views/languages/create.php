@@ -15,8 +15,6 @@ $this->menu = array(
 
 <?php
 $this->renderPartial('_form', array(
-		'model'  => $model,
-		'model2' => $model2,
-		'languages' => $languages,  
+		'model' => $model,
 		'buttons' => 'create'));
 ?>
