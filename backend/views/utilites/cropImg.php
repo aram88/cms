@@ -1,21 +1,19 @@
 <?php $previewWidth = 100; $previewHeight = 100;?>
 <?php $this->widget('ext.yii-jcrop.jCropWidget',array(
         'imageUrl'=>$imageUrl,
-        'formElementX'=>'Menus_cropX',
-        'formElementY'=>'Menus_cropY',
-        'formElementWidth'=>'Menus_cropW',
-        'formElementHeight'=>'Menus_cropH',
+        'formElementX'=>$model.'_cropX',
+        'formElementY'=>$model.'_cropY',
+        'formElementWidth'=>$model.'_cropW',
+        'formElementHeight'=>$model.'_cropH',
         'previewId'=>'avatar-preview', //optional preview image ID, see preview div below
         'previewWidth'=>$previewWidth,
         'previewHeight'=>$previewHeight,
         'jCropOptions'=>array(
-                'aspectRatio'=>1,
+                'onRelease'=> 'releaseCheck',
         		'onSelect'=> 'updateCoords',
-                'minSize'=>array(150, 150),
-                'maxSize'=>array(400, 450),
-                'boxWidth'=>700,
-                'boxHeight'=>700,
-                'setSelect'=>array(0, 0, 450, 400),
+                'boxWidth'=>400,
+                'boxHeight'=>400,
+                'setSelect'=>array(0, 0, 100, 100),
         ), 
         )
 );

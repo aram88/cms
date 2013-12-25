@@ -61,7 +61,7 @@ abstract class BaseMenus extends MainModel {
 
 	public function rules() {
 		return array(
-			array('created_by, updated_by, sub_show, visible, created_at, updated_at, position, menu_id, location, main_show, status', 'numerical', 'integerOnly'=>true),
+			array('created_by, updated_by, sub_show, visible, created_at, updated_at, position, main_show, status', 'numerical', 'integerOnly'=>true),
 			array('img', 'safe'),
 			array('created_by, updated_by, sub_show, img, visible, created_at, updated_at, position, menu_id, location, main_show, status', 'default', 'setOnEmpty' => true, 'value' => null),
 			array('id, created_by, updated_by, sub_show, img, visible, created_at, updated_at, position, menu_id, location, main_show, status', 'safe', 'on'=>'search'),
