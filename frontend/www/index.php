@@ -13,7 +13,7 @@
 
 // Loading project default init code for all entry points.
 require __DIR__.'/../../common/bootstrap.php';
-
+$_SESSION['KCEDITOR']['disabled']=false;
 // Setting up the frontend-specific aliases
 Yii::setPathOfAlias('frontend', ROOT_DIR .'/frontend');
 Yii::setPathOfAlias('www', ROOT_DIR . '/frontend/www');

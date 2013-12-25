@@ -44,6 +44,7 @@ class MenusController extends BackendController {
 		$languages =  new Languages;
 		$model2 =  array();	
 		
+		
 		$languages = $languages->findAll(array('select'=>array('id','name')));
 		
 		foreach ($languages as  $language){
