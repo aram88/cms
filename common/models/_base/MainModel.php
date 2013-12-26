@@ -15,8 +15,6 @@ class MainModel extends GxActiveRecord{
 		);
 	}
 	public function beforeSave (){
-		
-		
 		if (null !== Yii::app()->user){
 			$id = Yii::app()->user->id;
 		}else{
@@ -26,9 +24,7 @@ class MainModel extends GxActiveRecord{
 			$id =1;
 		}
 		if ($this->isNewRecord){
-			if ($this->created_by == null){
 				$this->created_by == $id;
-			}	
 		}
 		if ($this->updated_by == null){
 			$this->updated_by = $id;

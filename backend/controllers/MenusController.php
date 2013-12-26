@@ -37,15 +37,15 @@ class MenusController extends BackendController {
 				$model2[$language->id]->setAttributes($_POST['MenusTranslate'][$language->id]) ;
 				$validate = $model2[$language->id]->validate() && $validate;
 			}
-			
-			
 			if ($validate){
-				if ($model->save()) {
-					if (Yii::app()->getRequest()->getIsAjaxRequest())
-						Yii::app()->end();
-					else
-						$this->redirect(array('view', 'id' => $model->id));
+				$model->save();
+				foreach ($languages as  $language){
+					
+					$model2[$language->id]->menu_id = $model->id ;
+					$model2[$language->id]->save();
 				}
+				$this->redirect(array('view', 'id' => $model->id));
+				
 			}
 		}
 
@@ -98,7 +98,7 @@ class MenusController extends BackendController {
 		));
 	}
 	
-	protected function performAjaxValidation($model,$model2)
+	/*protected function performAjaxValidation($model,$model2)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='menus_form')
 		{
@@ -108,6 +108,6 @@ class MenusController extends BackendController {
 			}
 			Yii::app()->end();
 		}
-	}
+	}*/
 
 }

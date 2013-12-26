@@ -3,7 +3,6 @@
 <?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 		'id'=>'menus_form',
 		'type'=>'horizontal',
-		 'enableAjaxValidation'=>true,
 		'htmlOptions'=>array('class'=>'well')
 	)); ?>
 
@@ -51,10 +50,10 @@ Yii::import('ext.EAjaxUpload.EAjaxUpload'); ?>
 		<?php echo $form->textFieldRow($model, 'position'); ?>
 		</div><!-- row -->
 		<div class="row">
-		<?php echo $form->dropDownListRow($model, 'menu_id',array('empty'=>'----SELECT PARENT MENU----','menus'=> GxHtml::listDataEx(Menus::model()->findAllAttributes(null, true)))); ?>
+		<?php echo $form->dropDownListRow($model, 'menu_id',array(''=>'SELECT MENU','menus'=> GxHtml::listDataEx(Menus::model()->findAllAttributes(null, true)))); ?>
 		</div><!-- row -->
 		<div class="row">
-		<?php echo $form->dropDownListRow($model, 'location',array('empty'=>'----SELECT LOCATION----','options'=>$model->getLocations())); ?>
+		<?php echo $form->dropDownListRow($model, 'location',array(''=>'SELECT LOCATION','options'=>$model->getLocations())); ?>
 		</div><!-- row -->
 		<div class="row">
 		<?php echo $form->toggleButtonRow($model, 'main_show'); ?>
@@ -92,7 +91,7 @@ Yii::import('ext.EAjaxUpload.EAjaxUpload'); ?>
 		</div> 
 		
 		<?php  foreach ($languages as $language): ?>
-			<?php echo $form->hiddenField($model2[$language->id],'lng_id',array('value'=>$language->id))?>
+			<?php echo $form->hiddenField($model2[$language->id],'['.$language->id.']lng_id',array('value'=>$language->id))?>
 			<div class = "row">
 			<?php echo $language->name;?> <hr/>
 			</div>
