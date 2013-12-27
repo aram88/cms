@@ -15,20 +15,13 @@ class MainModel extends GxActiveRecord{
 		);
 	}
 	public function beforeSave (){
-		if (null !== Yii::app()->user){
-			$id = Yii::app()->user->id;
-		}else{
-			$id = 1;
-		}
-		if ($id == null){
-			$id =1;
-		}
-		if ($this->isNewRecord){
-				$this->created_by == $id;
-		}
-		if ($this->updated_by == null){
-			$this->updated_by = $id;
-		}	
+		if(null !== Yii::app()->user->id)
+			$id=Yii::app()->user->id;
+		else
+			$id=1;
+		if($this->isNewRecord)
+			$this->created_by=$id;
+		$this->updated_by=$id;
 		return parent::beforeSave();
 		
 	}

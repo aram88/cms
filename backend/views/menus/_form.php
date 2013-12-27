@@ -7,7 +7,7 @@
 	)); ?>
 
                 <?php echo $form->error($model,'img'); 
-
+                echo $form->hiddenField($model,'img');
                 echo $form->hiddenField($model,'cropID');
                 echo $form->hiddenField($model,'cropX', array('value' => '0'));
                 echo $form->hiddenField($model,'cropY', array('value' => '0'));
@@ -66,18 +66,17 @@ Yii::import('ext.EAjaxUpload.EAjaxUpload'); ?>
 					array(
 					        'id'=>'uploadFile',
 					        'config'=>array(
-					               'action'=>Yii::app()->createUrl('utilites/upload'),
+					               'action'=>Yii::app()->createUrl('utilites/upload',array('name'=>'menus')),
 					               'allowedExtensions'=>array("jpg"),//array("jpg","jpeg","gif","exe","mov" and etc...
 					               'sizeLimit'=>10*1024*1024,// maximum file size in bytes
 					               'minSizeLimit'=>10,// minimum file size in bytes
 					               'onComplete'=>"js:function(id, fileName, responseJSON){ 
 					                                        $('#uploadFile').hide();
 					                                        if (responseJSON.success) {
-					        									    $('#cropImg').load('". Yii::app()->createUrl('utilites/cropImg') ."fileName/'+fileName+'/model/Menus');
+					        										alert(responseJSON.filename);
+					        									    $('#cropImg').load('". Yii::app()->createUrl('utilites/cropImg') ."fileName/'+responseJSON.filename+'/model/Menus');
 					                                                $('#cropDialog').dialog('open');
-					                                                $('#Users_image').val(responseJSON.filename);
-					                                                $('#Users_imageExt').val((responseJSON.filename.substring(responseJSON.filename.lastIndexOf('.'))).toLowerCase());
-					                                                $('#uploadFile').show();
+					        									    $('#Menus_img').val(responseJSON.filename);
 					                                                $('.qq-upload-button').css('display', 'none');
 					                                        } else {
 					                                                $('#uploadFile').html('<p  width=\"160\">' + responseJSON.error +'</p>');
@@ -100,6 +99,9 @@ Yii::import('ext.EAjaxUpload.EAjaxUpload'); ?>
 			</div>
 			<div class = row>
 				<?php echo $form->textFieldRow($model2[$language->id], '['.$language->id.']title');?>
+			</div>
+			<div class = row>
+				<?php echo $form->textFieldRow($model2[$language->id], '['.$language->id.']img_name');?>
 			</div>
 			<div class = row>
 				<?php echo $form->ckEditorRow($model2[$language->id], '['.$language->id.']text');?>

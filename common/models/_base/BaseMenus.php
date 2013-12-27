@@ -133,4 +133,9 @@ abstract class BaseMenus extends MainModel {
 	public function getLocations(){
 		return $this->_LOCATIONS;
 	}
+	
+	public function beforeSave(){
+		//if (isset()
+		return parent::beforeSave();
+	}
 }

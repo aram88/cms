@@ -28,7 +28,8 @@
  * @property Languages $lng
  * @property User $createdBy
  */
-abstract class BaseMenusTranslate extends GxActiveRecord {
+Yii::import('common.models._base.MainModel');
+abstract class BaseMenusTranslate extends MainModel {
 
 	public static function model($className=__CLASS__) {
 		return parent::model($className);
