@@ -22,7 +22,7 @@ switch
 index
 
 # Composer-installed libraries (install them manually using `php composer.phar install` command)
-/vendor
+#/vendor
 
 # Local overrides  (you have to write them manually
 # after consulting with corresponding `local.example.php` scripts)
